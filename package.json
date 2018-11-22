@@ -1,0 +1,14 @@
+{
+  "name": "drawingbotsbot",
+  "version": "1.0.0",
+  "description": "Bot for Drawingbots Discord",
+  "main": "src/index.js",
+  "scripts": {},
+  "author": "Jonathan Berger",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "dotenv": "^6.1.0",
+    "twitter": "^1.7.1"
+  }
+}
