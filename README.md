@@ -1,6 +1,6 @@
-# Tweets To Discord
+# Drawingbots Bot
 
-Send tweets with specific hashtags to a Discord channel
+  The bot for the Drawingbots Discord server. For now it just sends #plottertwitter tweets to a Discord channel.
 
 ## Set up
 
