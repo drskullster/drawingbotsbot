@@ -21,9 +21,10 @@ bot.on('ready', function () {
   }
 
   const stream = twitter.stream('statuses/filter', { track: process.env.TWITTER_KEYWORDS });
-  stream.on('data', function (event) {
-    if (event) {
-      chan.send('@' + event.user.screen_name + ': ' + event.text);
+
+  stream.on('data', function (tweet) {
+    if (tweet && !tweet.retweeted_status) {
+      chan.send(`https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`);
     }
   });
 
