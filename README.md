@@ -1,4 +1,4 @@
-# Tweets To Discord
+# Discord Twitter Feed
 
 Send tweets with specific hashtags to a Discord channel
 
