@@ -20,6 +20,9 @@ bot.on('ready', function () {
     return;
   }
 
+  console.log('Connected to Discord Server.');
+
+
   const stream = twitter.stream('statuses/filter', { track: process.env.TWITTER_KEYWORDS });
 
   stream.on('data', function (tweet) {
@@ -33,6 +36,7 @@ bot.on('ready', function () {
   });
 });
 
+bot.on('error', console.error);
 
 
 bot.login(process.env.DISCORD_TOKEN);
