@@ -10,6 +10,7 @@ const twitter = new Twitter({
 });
 
 const bot = new Discord.Client();
+let stream;
 
 bot.on('ready', function () {
   //bot.channels.map((chan) => console.log(chan.id, chan.name));
@@ -22,8 +23,12 @@ bot.on('ready', function () {
 
   console.log('Connected to Discord Server.');
 
+  if (stream) {
+    // stream already started
+    return;
+  }
 
-  const stream = twitter.stream('statuses/filter', { track: process.env.TWITTER_KEYWORDS });
+  stream = twitter.stream('statuses/filter', { track: process.env.TWITTER_KEYWORDS });
 
   stream.on('data', function (tweet) {
     if (tweet && !tweet.retweeted_status) {
@@ -32,11 +37,15 @@ bot.on('ready', function () {
   });
 
   stream.on('error', function (error) {
-    console.error('Error from twitter:', error.toString());
+    console.error('Error from twitter.');
+    console.error(error.message);
   });
 });
 
-bot.on('error', console.error);
+bot.on('error', (error) => {
+  console.error("Error from discord.");
+  console.error(error.message);
+});
 
 
 bot.login(process.env.DISCORD_TOKEN);
