@@ -25,6 +25,7 @@ bot.on('ready', function () {
 
   if (stream) {
     // stream already started
+    console.warn('Stream already started.');
     return;
   }
 
@@ -32,7 +33,9 @@ bot.on('ready', function () {
 
   stream.on('data', function (tweet) {
     if (tweet && !tweet.retweeted_status) {
-      chan.send(`https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`);
+      const url = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+      console.log('New tweet !', url);
+      chan.send(url);
     }
   });
 
