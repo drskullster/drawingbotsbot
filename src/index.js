@@ -17,7 +17,7 @@ bot.on('ready', function () {
   const chan = bot.channels.get(process.env.DISCORD_CHANNEL_ID);
 
   if (!chan) {
-    console.error('Chan doesn\'t exist, nothing will happen here.');
+    console.log('Chan doesn\'t exist, nothing will happen here.');
     return;
   }
 
@@ -25,7 +25,7 @@ bot.on('ready', function () {
 
   if (stream) {
     // stream already started
-    console.warn('Stream already started.');
+    console.log('Stream already started.');
     return;
   }
 
@@ -40,14 +40,14 @@ bot.on('ready', function () {
   });
 
   stream.on('error', function (error) {
-    console.error('Error from twitter.');
-    console.error(error.message);
+    console.log('Error from twitter.');
+    console.log(error.message);
   });
 });
 
 bot.on('error', (error) => {
-  console.error("Error from discord.");
-  console.error(error.message);
+  console.log("Error from discord.");
+  console.log(error.message);
 });
 
 
